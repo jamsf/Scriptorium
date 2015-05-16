@@ -1,0 +1,67 @@
+Story Generator
+
+Story Schema:
+{
+	type: string,
+	id: string,
+	require: [effects],
+	body: [string],
+	outcome:{
+		win: winEffect,
+		lose: loseEffect
+		quitEarly: quitEarlyEffect
+}
+}
+
+storyexample.json:
+{
+	"type":"rescue",
+	"id": "J98G3PGJWEIE9W98EHVWJOE",
+	"require": [
+		{
+			“type”: “relationship”,
+			“feeling”: “love”,
+			“owner”: “98WFHWE9G02JE9JW”,
+			“target”: “%H”
+		},
+		{
+			“type”:”relationship”,
+			“feeling”:”love”,
+			“owner”: “%H”,
+			“target”: “98WFHWE9G02JE9JW”
+		},
+		{
+			“type”:”state”,
+			“status”:”kidnapped”
+			“owner”:”98WFHWE9G02JE9JW”
+		}
+	],
+	"body": [
+		“%H got a letter from [98WFHWE9G02JE9JW]!”,
+		“‘Help me %H I’ve been kidnapped by %B!’”,
+		“%H love for [98WFHWE9G02JE9JW] knows no bounds”,
+		“%H headed off to the %L to rescue the one they love”
+	],
+	“outcome”: {
+		“lose”: {
+			“body”:”Oh no, now %H has become trapped $H[himself/herself]”,
+			“effects”: [
+				{
+					“type”:”state”,
+					“status”:”kidnapped”	,
+					“target”:”%H”
+				}
+			]
+		}
+		“win”: {
+			“body”: “Yay [98WFHWE9G02JE9JW] is saved!”,
+			“effects”: [
+				{
+					“type”:”state”,
+					“status”:”normal”,
+					“target”:”98WFHWE9G02JE9JW”
+				}
+			]
+		}
+	}
+}
