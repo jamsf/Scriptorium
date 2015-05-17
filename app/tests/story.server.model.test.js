@@ -41,7 +41,10 @@ describe('Story Model Unit Tests:', function() {
 		it('Save new story', function(done) {
 			var story = new Story({
 				title: 'The Witch or whatever',
-				body: ['example', 'of', 'valid', 'story']
+				pageOne: 'example', 
+				pageTwo: 'of', 
+				pageThree: 'valid',
+				pageFour: 'story'
 			});
 
 			story.save(function(err, saved) {
@@ -53,19 +56,24 @@ describe('Story Model Unit Tests:', function() {
 		it('throws validation error when story longer than 4 strings', function(done) {
 			var story = new Story({
 				title: 'The Witch or whatever',
-				body: ['example', 'of', 'not', 'valid', 'story']
+				pageOne: 'example', 
+				pageTwo: 'of an invalid',
+				pageFour: 'story'
 			});
 
 			story.save(function(err, saved) {
 				should.exist(err);
-				err.errors.body.message.should.equal('Story body must have 4 strings');
+				err.errors.body.message.should.equal('Missing contents from page three');
 				done();
 			});
 		});
 
 		it('throws validation error with non-existent title', function(done) {
 			var story = new Story({
-				body: ['example', 'of', 'not', 'valid', 'story']
+				pageOne: 'example', 
+				pageTwo: 'of', 
+				pageThree: 'no',
+				pageFour: 'title'
 			});
 
 			story.save(function(err, saved) {

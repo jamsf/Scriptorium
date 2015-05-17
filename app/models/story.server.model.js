@@ -7,13 +7,6 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
- * Makes sure Story's body is 4 strings in length
- */
-function validateBody(v) {
-	return v.length === 4;
-}
-
-/**
  * Story Schema
  */
 var StorySchema = new Schema({
@@ -21,13 +14,25 @@ var StorySchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	body: {
-		type: [String],
-		validate: [validateBody, 'Story body must have 4 strings']
+	pageOne: {
+		type: String,
+		required: 'Missing contents from page one'
+	},
+	pageTwo: {
+		type: String,
+		required: 'Missing contents from page two'
+	},
+	pageThree: {
+		type: String,
+		required: 'Missing contents from page three'
+	},
+	pageFour: {
+		type: String,
+		required: 'Missing contents from page four'
 	},
 	title: {
 		type: String,
-		required: 'Story must have title'
+		required: 'Story must have a title'
 	}
 });
 

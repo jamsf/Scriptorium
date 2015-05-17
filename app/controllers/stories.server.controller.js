@@ -16,6 +16,7 @@ exports.create = function(req, res) {
 
     story.save(function(err) {
         if (err) {
+			console.log(errorHandler.getErrorMessage(err));
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
@@ -86,7 +87,7 @@ exports.list = function(req, res) {
 /**
  * Story middleware
  */
-exports.storyByID = function(req, res, next, id) {
+exports.storiesById = function(req, res, next, id) {
  
 	if (!mongoose.Types.ObjectId.isValid(id)) {
 		return res.status(400).send({

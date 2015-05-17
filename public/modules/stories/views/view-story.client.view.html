@@ -1,0 +1,17 @@
+<section data-ng-controller="StoriesController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="story.title"></h1>
+		<p data-ng-bind="story.pageOne"></p>
+		<p data-ng-bind="story.pageTwo"></p>
+		<p data-ng-bind="story.pageThree"></p>
+		<p data-ng-bind="story.pageFour"></p>
+	</div>
+	<div class="pull-right">
+		<a class="btn btn-primary" href="/#!/stories/{{story._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+</section>
