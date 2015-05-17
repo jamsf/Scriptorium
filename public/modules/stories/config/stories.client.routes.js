@@ -19,7 +19,7 @@ angular.module('stories').config(['$stateProvider',
 		}).
 		state('viewStory', {
 			url: '/stories/:storyId',
-			templateUrl: 'modules/stories/views/edit-story.client.view.html'
+			templateUrl: 'modules/stories/views/view-story.client.view.html'
 		});
 	}
 ]);
